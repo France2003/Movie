@@ -41,7 +41,8 @@ function App() {
               <Route path="/Movie/now_playing" element={<NowPlayingPage />} />
               <Route path="/Movie/search:id" element={<SearchResultsPage />} />
               <Route path="/Movie/ranking" element={<RankingPage />} />
-              <Route path="/Movie/search/:title" element={<SearchResultsPage />} />
+              <Route path="/Movie/search" element={<SearchResultsPage />} />
+              
               <Route path="*" element={<NoPage />} />
             </Route>
           </Routes>

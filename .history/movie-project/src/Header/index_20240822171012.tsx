@@ -81,6 +81,7 @@ function Header() {
             navigate(`/movie/search/${encodeURIComponent(movieTitle)}`);
         }
     };
+
     const clearSearch = () => {
         setQuery("");
         setResults([]);

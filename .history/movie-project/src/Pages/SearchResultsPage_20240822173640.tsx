@@ -48,7 +48,7 @@ function SearchResultsPage() {
             <div className="spinner"></div>
         </div>
     }
-    if (!title) return <p className="text-center text-red-600">{error}</p>;
+    if (error) return <p className="text-center text-red-600">{error}</p>;
     const handlePageChange = (page: number) => {
         if (page > 0 && page <= totalPages) {
             setCurrentPage(page);

@@ -48,7 +48,7 @@ function SearchResultsPage() {
             <div className="spinner"></div>
         </div>
     }
-    if (!title) return <p className="text-center text-red-600">{error}</p>;
+    if (error) return <p className="text-center text-red-600">{error}</p>;
     const handlePageChange = (page: number) => {
         if (page > 0 && page <= totalPages) {
             setCurrentPage(page);
@@ -59,12 +59,14 @@ function SearchResultsPage() {
         <div className="w-full max-w-screen-lg mx-auto mt-[90px] px-6">
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Search Results for "{decodeURIComponent(title)}"</title>
+                <title>Search Results for"{decodeURIComponent(title)}"</title>
                 <link rel="canonical" href="http://mysite.com/example" />
             </Helmet>
             <h1 className="text-3xl font-bold text-white mb-4">
                 Search Results for "{decodeURIComponent(title)}"
             </h1>
+            {/* {loading && <p className="text-center text-blue-600">Loading...</p>} */}
+            {/* {error && <p className="text-center text-red-600">{error}</p>} */}
             {!loading && !error && (
                 <>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-6">

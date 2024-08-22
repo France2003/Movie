@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, KeyboardEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { IoSearch, IoLogOutOutline } from "react-icons/io5";
+import { IoSearch, IoClose,IoLogOutOutline } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import { SiFireship } from "react-icons/si";
 import { MdExplore } from "react-icons/md";
-import { FaRegHeart} from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { FaRankingStar } from "react-icons/fa6";
 import axios from "axios";
 import NavbarItem from "../Component/NavbarItem";
@@ -42,8 +42,8 @@ function Header() {
                 }
             };
 
-            const timeoutId = setTimeout(fetchResults, 500); 
-            return () => clearTimeout(timeoutId);
+            const timeoutId = setTimeout(fetchResults, 500); // Delay for debounce
+            return () => clearTimeout(timeoutId); // Cleanup on unmount or query change
         } else {
             setResults([]);
         }
@@ -75,16 +75,11 @@ function Header() {
         return null; 
     }
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter" && query.trim()) {
-            const movieTitle = query.trim();
-            navigate(`/movie/search/${encodeURIComponent(movieTitle)}`);
-        }
-    };
     const clearSearch = () => {
         setQuery("");
         setResults([]);
     };
+
 
     return (
         <header>
@@ -97,7 +92,6 @@ function Header() {
                         placeholder="Search"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        onKeyDown={handleKeyDown}
                         className=" search-box p-2 mr-5 pr-[50px] rounded-md"
                         style={{ border: 1, borderStyle: 'solid', borderColor: 'white' }}
                     />

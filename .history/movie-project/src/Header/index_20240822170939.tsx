@@ -78,9 +78,11 @@ function Header() {
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && query.trim()) {
             const movieTitle = query.trim();
+            // Redirect to the movie page
             navigate(`/movie/search/${encodeURIComponent(movieTitle)}`);
         }
     };
+
     const clearSearch = () => {
         setQuery("");
         setResults([]);
