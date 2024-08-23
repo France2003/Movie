@@ -4,7 +4,7 @@ import { IoSearch, IoLogOutOutline } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import { SiFireship } from "react-icons/si";
 import { MdExplore } from "react-icons/md";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart} from "react-icons/fa";
 import { FaRankingStar } from "react-icons/fa6";
 import axios from "axios";
 import NavbarItem from "../Component/NavbarItem";
@@ -22,7 +22,7 @@ function Header() {
     const [user, setUser] = useState<{ name: string } | null>(null);
     const navigate = useNavigate();
     const location = useLocation();
-    const isActive = (pathname:any) => location.pathname === pathname;
+    const isActive = (pathname) => location.pathname === pathname;
 
     useEffect(() => {
         if (query.trim()) {
@@ -44,7 +44,7 @@ function Header() {
                 }
             };
 
-            const timeoutId = setTimeout(fetchResults, 500);
+            const timeoutId = setTimeout(fetchResults, 500); 
             return () => clearTimeout(timeoutId);
         } else {
             setResults([]);
@@ -74,7 +74,7 @@ function Header() {
     }, [navigate]);
 
     if (!user) {
-        return null;
+        return null; 
     }
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -106,6 +106,11 @@ function Header() {
                     <IoSearch className="text-xl absolute top-2 right-7 font-normal" />
                     {query && results.length > 0 && (
                         <>
+                            {/* <IoClose
+                                onClick={clearSearch}
+                                className="text-xl absolute top-2 right-2 cursor-pointer"
+                                title="Clear search"
+                            /> */}
                             <div className="absolute z-10 w-[240px] bg-white border border-gray-300 rounded-md mt-1">
                                 <div className="max-h-[500px] overflow-y-auto p-4">
                                     <ul className="space-y-2">
@@ -143,24 +148,12 @@ function Header() {
                 </a>
                 <h2 className=" ml-5 text-center">Welcome, {user.name}</h2>
                 <div className="navbar">
-                    <Link to="/Movie/Home">
-                        <NavbarItem type={isActive("/Movie/Home") ? "nav-active" : ""} icon={<AiOutlineHome />} label="Home" />
-                    </Link>
-                    <Link to="/Movie/popular">
-                        <NavbarItem type={isActive("/Movie/popular") ? "nav-active" : ""} icon={<SiFireship />} label="Popular" />
-                    </Link>
-                    <Link to="/Movie/now_playing">
-                        <NavbarItem type={isActive("/Movie/now_playing") ? "nav-active" : ""} icon={<MdExplore />} label="Now Playing" />
-                    </Link>
-                    <Link to="/Movie/ranking">
-                        <NavbarItem type={isActive("/Movie/ranking") ? "nav-active" : ""} icon={<FaRankingStar />} label="Ranking" />
-                    </Link>
-                    <Link to="/Movie/favourite">
-                        <NavbarItem type={isActive("/Movie/favourite") ? "nav-active" : ""} icon={<FaRegHeart />} label="Favourite" />
-                    </Link>
-                    <Link to="/Movie">
-                        <NavbarItem type={isActive("/Movie") ? "nav-active" : ""} icon={<IoLogOutOutline />} label="LogIn" />
-                    </Link>
+                    <Link to={`/Movie/Home`}><NavbarItem type="nav-active" icon={<AiOutlineHome />} label="Home" /></Link>
+                    <Link to={`/Movie/popular`}><NavbarItem icon={<SiFireship />} label="Popular" /></Link>
+                    <Link to={`/Movie/now_playing`}><NavbarItem icon={<MdExplore />} label="Now Playing" /></Link>
+                    <Link to={`/Movie/ranking`}><NavbarItem icon={<FaRankingStar />} label="Ranking" /></Link>
+                    <Link to={`/Movie/favourite`}><NavbarItem icon={<FaRegHeart />} label="Favourite" /></Link>
+                    <Link to={`/Movie`}><NavbarItem icon={<IoLogOutOutline  />} label="LogIn" /></Link>  
                 </div>
             </div>
         </header>

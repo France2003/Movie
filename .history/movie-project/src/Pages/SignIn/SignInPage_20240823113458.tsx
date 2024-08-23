@@ -8,7 +8,6 @@ function Login({ url }: { url: string }) {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,15 +31,13 @@ function Login({ url }: { url: string }) {
         if (storedUser) {
             const user = JSON.parse(storedUser);
             if (user.email === email && user.password === password) {
-                setSuccessMessage("Login successful!");
-                setTimeout(() => {
-                    navigate("/Movie/Home");
-                }, 2000)
+                alert("Login successful!");
+                navigate("/Movie/Home"); // Redirect to the home page after successful login
             } else {
-                setSuccessMessage("Invalid email or password.");
+                alert("Invalid email or password.");
             }
         } else {
-            setSuccessMessage("No user found. Please register.");
+            alert("No user found. Please register.");
         }
     };
 
@@ -61,11 +58,6 @@ function Login({ url }: { url: string }) {
             </Helmet>
             <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-8">
                 <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
-                {successMessage && (
-                    <div className="mb-4 p-4 bg-green-600 text-white rounded-md">
-                        {successMessage}
-                    </div>
-                )}
                 <form onSubmit={handleLogin}>
                     <div className="mb-4">
                         <label className="block text-sm font-medium mb-2" htmlFor="email">Email</label>

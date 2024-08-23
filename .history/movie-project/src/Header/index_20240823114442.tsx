@@ -106,6 +106,11 @@ function Header() {
                     <IoSearch className="text-xl absolute top-2 right-7 font-normal" />
                     {query && results.length > 0 && (
                         <>
+                            {/* <IoClose
+                                onClick={clearSearch}
+                                className="text-xl absolute top-2 right-2 cursor-pointer"
+                                title="Clear search"
+                            /> */}
                             <div className="absolute z-10 w-[240px] bg-white border border-gray-300 rounded-md mt-1">
                                 <div className="max-h-[500px] overflow-y-auto p-4">
                                     <ul className="space-y-2">
